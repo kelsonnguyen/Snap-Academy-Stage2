@@ -27,15 +27,18 @@
 // [0] is Title, [1] is image link, [2] is Character name
 gameChars = 
 [
-  ["Fresh Prince of Bel Air",
-     "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg", 
-     "Will Smith"],
-  ["Curb Your Enthusiasm",
-    "https://m.media-amazon.com/images/M/MV5BZDY1ZGM4OGItMWMyNS00MDAyLWE2Y2MtZTFhMTU0MGI5ZDFlXkEyXkFqcGdeQXVyMDc5ODIzMw@@._V1_FMjpg_UX1000_.jpg",
-    "Character Placeholder"],
-  ["East Los High",
-    "https://static.wikia.nocookie.net/hulu/images/6/64/East_Los_High.jpg",
-    "Character Placeholder"]
+  ["Honkai Star Rail",
+     "https://www.destructoid.com/wp-content/uploads/2025/04/castorice-hsr-official-artwork.jpg", 
+     "Castorice"],
+  ["Bloons TD 6",
+    "images/druid.jpg",
+    "Druid"],
+  ["League of Legends",
+    "images/elementalist_lux.jpg",
+    "Lux"],
+  ["Genshin Impact",
+    "images/genshin_gaming.jpg",
+    "Gaming"]
 ];
 
 // Your final submission should have much more data than this, and
@@ -57,13 +60,14 @@ function showCards(filters) {
 function editCardContent(card, filteredData) {
   card.style.display = "block";
 
+  /*
   const cardHeader = card.querySelector("h2");
   cardHeader.textContent = filteredData[0];
-
+  */
   const cardImage = card.querySelector("img");
   cardImage.src = filteredData[1];
   cardImage.alt = filteredData[0] + " Poster";
-
+  /*
   // Character name
   const cardCharacter = card.querySelector("h3");
   cardCharacter.textContent = filteredData[2];
@@ -72,6 +76,7 @@ function editCardContent(card, filteredData) {
   // View the output by right clicking on your website,
   // select "Inspect", then click on the "Console" tab
   console.log("new card:", filteredData[0], "- html: ", card);
+  */
 }
 
 // This calls the addCards() function when the page is first loaded
@@ -100,8 +105,8 @@ searchInput.addEventListener("input", (e) => {
   const searchString = e.target.value.toLowerCase();
 
   const filters = gameChars.filter(game => {
-    if (game[0].toLowerCase().includes(searchString) ||
-      game[2].toLowerCase().includes(searchString)) {
+    if (game[0].toLowerCase().startsWith(searchString) ||
+      game[2].toLowerCase().startsWith(searchString)) {
         return true;
       }
       return false;
