@@ -25,7 +25,7 @@
 
 // Array of Title, URL, and Character
 // [0] is Title, [1] is image link, [2] is Character name
-imageURLPairs = 
+gameChars = 
 [
   ["Fresh Prince of Bel Air",
      "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg", 
@@ -42,40 +42,40 @@ imageURLPairs =
 // you should use more than just an array of strings to store it all.
 
 // This function adds cards the page to display the data in the array
-function showCards() {
+function showCards(filters) {
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML = "";
   const templateCard = document.querySelector(".card");
 
-  for (let i = 0; i < imageURLPairs.length; i++) {
+  for (let i = 0; i < filters.length; i++) {
     const nextCard = templateCard.cloneNode(true); // Copy the template card
-    editCardContent(nextCard, imageURLPairs[i]); // Edit title and image
+    editCardContent(nextCard, filters[i]); // Edit title and image
     cardContainer.appendChild(nextCard); // Add new card to the container
   }
 }
 
-function editCardContent(card, mediaURL) {
+function editCardContent(card, filteredData) {
   card.style.display = "block";
 
   const cardHeader = card.querySelector("h2");
-  cardHeader.textContent = mediaURL[0];
+  cardHeader.textContent = filteredData[0];
 
   const cardImage = card.querySelector("img");
-  cardImage.src = mediaURL[1];
-  cardImage.alt = mediaURL[0] + " Poster";
+  cardImage.src = filteredData[1];
+  cardImage.alt = filteredData[0] + " Poster";
 
   // Character name
   const cardCharacter = card.querySelector("h3");
-  cardCharacter.textContent = mediaURL[2];
+  cardCharacter.textContent = filteredData[2];
 
   // You can use console.log to help you debug!
   // View the output by right clicking on your website,
   // select "Inspect", then click on the "Console" tab
-  console.log("new card:", mediaURL[0], "- html: ", card);
+  console.log("new card:", filteredData[0], "- html: ", card);
 }
 
 // This calls the addCards() function when the page is first loaded
-document.addEventListener("DOMContentLoaded", showCards);
+document.addEventListener("DOMContentLoaded", showCards(gameChars));
 
 function quoteAlert() {
   console.log("Button Clicked!");
@@ -85,23 +85,27 @@ function quoteAlert() {
 }
 
 function removeLastCard() {
-  imageURLPairs.pop(); // Remove last item in titles array
-  showCards(); // Call showCards again to refresh
+  gameChars.pop(); // Remove last item in gameChars array
+  showCards(gameChars); // Call showCards again to refresh
 }
 
 // Data search
-// Some code is rom https://www.youtube.com/watch?v=TlP5WIxVirU 
+/*
+  Used https://www.youtube.com/watch?v=TlP5WIxVirU initially, but isVisible
+  didn't work out. However, the code uses the include section
+  Used https://www.youtube.com/watch?v=wxz5vJ1BWrc for filter section
+*/
 const searchInput = document.querySelector("[data-search]");
 searchInput.addEventListener("input", (e) => {
-  const value = e.target.value.toLowerCase();
-  const cards = document.querySelectorAll(".card");
+  const searchString = e.target.value.toLowerCase();
 
-  cards.forEach(card => {    
-    const title = card.querySelector("h2").textContent.toLowerCase();
-    const charName = card.querySelector("h3").textContent.toLowerCase();
-
-    const isVisible = title.includes(value) || 
-      charName.includes(value);
-    card.classList.toggle("hide", !isVisible);
+  const filters = gameChars.filter(game => {
+    if (game[0].toLowerCase().includes(searchString) ||
+      game[2].toLowerCase().includes(searchString)) {
+        return true;
+      }
+      return false;
   });
+
+  showCards(filters);
 });
