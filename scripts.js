@@ -23,19 +23,21 @@
  *
  */
 
-const FRESH_PRINCE_URL =
-  "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg";
-const CURB_POSTER_URL =
-  "https://m.media-amazon.com/images/M/MV5BZDY1ZGM4OGItMWMyNS00MDAyLWE2Y2MtZTFhMTU0MGI5ZDFlXkEyXkFqcGdeQXVyMDc5ODIzMw@@._V1_FMjpg_UX1000_.jpg";
-const EAST_LOS_HIGH_POSTER_URL =
-  "https://static.wikia.nocookie.net/hulu/images/6/64/East_Los_High.jpg";
-
-// This is an array of strings (TV show titles)
-let titles = [
-  "Fresh Prince of Bel Air",
-  "Curb Your Enthusiasm",
-  "East Los High",
+// Array of Title, URL, and Character
+// [0] is Title, [1] is image link, [2] is Character name
+imageURLPairs = 
+[
+  ["Fresh Prince of Bel Air",
+     "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg", 
+     "Will Smith"],
+  ["Curb Your Enthusiasm",
+    "https://m.media-amazon.com/images/M/MV5BZDY1ZGM4OGItMWMyNS00MDAyLWE2Y2MtZTFhMTU0MGI5ZDFlXkEyXkFqcGdeQXVyMDc5ODIzMw@@._V1_FMjpg_UX1000_.jpg",
+    "Character Placeholder"],
+  ["East Los High",
+    "https://static.wikia.nocookie.net/hulu/images/6/64/East_Los_High.jpg",
+    "Character Placeholder"]
 ];
+
 // Your final submission should have much more data than this, and
 // you should use more than just an array of strings to store it all.
 
@@ -45,40 +47,31 @@ function showCards() {
   cardContainer.innerHTML = "";
   const templateCard = document.querySelector(".card");
 
-  for (let i = 0; i < titles.length; i++) {
-    let title = titles[i];
-
-    // This part of the code doesn't scale very well! After you add your
-    // own data, you'll need to do something totally different here.
-    let imageURL = "";
-    if (i == 0) {
-      imageURL = FRESH_PRINCE_URL;
-    } else if (i == 1) {
-      imageURL = CURB_POSTER_URL;
-    } else if (i == 2) {
-      imageURL = EAST_LOS_HIGH_POSTER_URL;
-    }
-
+  for (let i = 0; i < imageURLPairs.length; i++) {
     const nextCard = templateCard.cloneNode(true); // Copy the template card
-    editCardContent(nextCard, title, imageURL); // Edit title and image
+    editCardContent(nextCard, imageURLPairs[i]); // Edit title and image
     cardContainer.appendChild(nextCard); // Add new card to the container
   }
 }
 
-function editCardContent(card, newTitle, newImageURL) {
+function editCardContent(card, mediaURL) {
   card.style.display = "block";
 
   const cardHeader = card.querySelector("h2");
-  cardHeader.textContent = newTitle;
+  cardHeader.textContent = mediaURL[0];
 
   const cardImage = card.querySelector("img");
-  cardImage.src = newImageURL;
-  cardImage.alt = newTitle + " Poster";
+  cardImage.src = mediaURL[1];
+  cardImage.alt = mediaURL[0] + " Poster";
+
+  // Character name
+  const cardCharacter = card.querySelector("h3");
+  cardCharacter.textContent = mediaURL[2];
 
   // You can use console.log to help you debug!
   // View the output by right clicking on your website,
   // select "Inspect", then click on the "Console" tab
-  console.log("new card:", newTitle, "- html: ", card);
+  console.log("new card:", mediaURL[0], "- html: ", card);
 }
 
 // This calls the addCards() function when the page is first loaded
@@ -92,6 +85,23 @@ function quoteAlert() {
 }
 
 function removeLastCard() {
-  titles.pop(); // Remove last item in titles array
+  imageURLPairs.pop(); // Remove last item in titles array
   showCards(); // Call showCards again to refresh
 }
+
+// Data search
+// Some code is rom https://www.youtube.com/watch?v=TlP5WIxVirU 
+const searchInput = document.querySelector("[data-search]");
+searchInput.addEventListener("input", (e) => {
+  const value = e.target.value.toLowerCase();
+  const cards = document.querySelectorAll(".card");
+
+  cards.forEach(card => {    
+    const title = card.querySelector("h2").textContent.toLowerCase();
+    const charName = card.querySelector("h3").textContent.toLowerCase();
+
+    const isVisible = title.includes(value) || 
+      charName.includes(value);
+    card.classList.toggle("hide", !isVisible);
+  });
+});

@@ -11,11 +11,18 @@ body {
 
 .title {
   text-align: center;
+  padding-top: 10px;
   margin: 0;
-  font-size: 8em;
+  font-size: 4em;
   font-family: "Helvetica";
   font-weight: normal;
   color: white;
+}
+
+.search-bar {
+  /* 
+  Center later
+  */
 }
 
 #card-container {
@@ -32,6 +39,22 @@ body {
   margin: 5px;
 }
 
+.card:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.card:active {
+  /*
+    Shift to left of screen then display content
+    Also make other cards transparent (?) 
+  */
+}
+
+.hide {
+  display: none;
+}
+
 .card-content {
   padding: 20px;
   font-family: "Verdana";
@@ -46,6 +69,13 @@ body {
 .card img {
   width: 100%;
   height: auto;
+}
+
+/* Character name */
+.card-content h3 {
+  margin-top: 0;
+  font-size: 15px;
+  text-align: center;
 }
 
 .footer {
