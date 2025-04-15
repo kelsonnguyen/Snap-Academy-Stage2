@@ -1,39 +1,85 @@
-// Array of Title, URL, and Character
+// Array of Title, URL, Character, genre(s), platform(s)
 gameChars = 
 [
-  {title: "Honkai Star Rail",
-     link: "https://www.destructoid.com/wp-content/uploads/2025/04/castorice-hsr-official-artwork.jpg", 
-     charName: "Castorice"},
-  {title: "Bloons TD 6",
+  {
+    title: "Bloons TD 6",
     link: "images/druid.jpg",
-    charName: "Druid"},
-  {title: "Genshin Impact",
+    charName: "Druid",
+    genre: ["Strategy", "Tower Defense"],
+    platform: ["PC", "Mobile", "Playstation", "Xbox"]
+  },  
+  {
+    title: "Bloons TD 6",
+    link: "images/btd6_heli.png",
+    charName: "Heli Pilot",
+    genre: ["Strategy", "Tower Defense"],
+    platform: ["PC", "Mobile", "Playstation", "Xbox"]
+  },  
+  {
+    title: "Honkai Star Rail",
+    link: "images/hsr_acheron.png", 
+    charName: "Acheron",
+    genre: ["Strategy", "Role-Playing"],
+    platform: ["PC", "Mobile", "Playstation"]
+},
+  {
+    title: "Honkai Star Rail",
+    link: "images/hsr_castorice.png", 
+    charName: "Castorice",
+    genre: ["Strategy", "Role-Playing"],
+    platform: ["PC", "Mobile", "Playstation"]
+  },
+  {
+    title: "Genshin Impact",
     link: "images/genshin_gaming.jpg",
-    charName: "Gaming"},
-  {title: "League of Legends",
-    link: "images/league_ahri.jpg",
-    charName: "Ahri"},
-  {title: "League of Legends",
-    link: "images/league_kaisa.jpg",
-    charName: "Kai'sa"},
-  {title: "League of Legends",
+    charName: "Gaming",
+    genre: ["Adventure", "Role-Playing"],
+    platform: ["PC", "Mobile", "Playstation"]
+  },
+  {
+    title: "Maplestory",
+    link: "images/maplestory_adele.jpg",
+    charName: "Adele",
+    genre: ["MMO"],
+    platform: ["PC", "Mobile"]
+  },  
+  {
+    title: "League of Legends",
     link: "images/elementalist_lux.jpg",
-    charName: "Lux"},
-  {title: "League of Legends",
+    charName: "Lux",
+    genre: ["MOBA"],
+    platform: ["PC", "Mobile"]
+  },
+  {
+    title: "League of Legends",
     link: "images/league_morgana.jpg",
-    charName: "Morgana"},
-  {title: "League of Legends",
+    charName: "Morgana",
+    genre: ["MOBA"],
+    platform: ["PC", "Mobile"]
+  },
+  {
+    title: "League of Legends",
     link: "images/league_senna.jpg",
-    charName: "Senna"},
-  {title: "League of Legends",
+    charName: "Senna",
+    genre: ["MOBA"],
+    platform: ["PC", "Mobile"]
+  },
+  {
+    title: "League of Legends",
     link: "images/league_yone.jpg",
-    charName: "Yone"},
+    charName: "Yone",
+    genre: ["MOBA"],
+    platform: ["PC", "Mobile"]
+  },
+  {
+    title: "Starcraft 2",
+    link: "images/sc2_kerrigan.jpg",
+    charName: "Kerrigan",
+    genre: ["Strategy", "RTS"],
+    platform: ["PC"]
+  },
 ];
 
-// Your final submission should have much more data than this, and
-// you should use more than just an array of strings to store it all.
-
-// This function adds cards the page to display the data in the array
 function showCards(filters) {
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML = "";
@@ -58,16 +104,16 @@ function editCardContent(card, filteredData) {
   details.querySelector("h3").textContent = filteredData.charName;
   
   // Add click handler
-  card.addEventListener('click', function() {
-    const container = document.getElementById('card-container');
-    const allCards = document.querySelectorAll('.card');
-    const isActive = this.classList.contains('active');
+  card.addEventListener("click", function() {
+    const container = document.getElementById("card-container");
+    const allCards = document.querySelectorAll(".card");
+    const isActive = this.classList.contains("active");
     
     // Remove active from all cards -> returns view of all cards
-    allCards.forEach(c => {
-      c.classList.remove('active');
-    });
-    container.classList.remove('hide-others');
+    for (let i = 0; i < allCards.length; i++) {
+      allCards[i].classList.remove("active");
+    }
+    container.classList.remove("hide-others");
     
     // Hide other cards -> shows view of clicked card
     if (!isActive) {

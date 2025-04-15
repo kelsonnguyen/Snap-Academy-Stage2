@@ -9,12 +9,47 @@
   </head>
 
   <body>
+    <!-- Title and search bar -->
     <header class="main-header">
       <h1 class="title">Favorite Game Characters</h1>
       <div class="search-container">
-        <input class="search-bar" type="search" id="search" placeholder="Search" data-search> 
+        <input class="search-bar" type="search" id="search" placeholder="Search by title or character name" data-search> 
+      </div>
+
+      <!-- Filter section -->
+      <div class="filter-container">
+        <div class="dropdown">
+          <span>Games</span>
+          <div class="dropdown-content">
+            <p>Hello World!</p>
+          </div>
+        </div>
+        <div class="dropdown">
+          <span>Genres</span>
+          <div class="dropdown-content">
+            <p>Adventure</p>
+            <p>MMO</p>
+            <p>MOBA</p>
+            <p>Role-Playing</p>
+            <p>RTS</p>
+            <p>Strategy</p>
+            <p>Tower Defense</p>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <span>Platforms</span>
+          <div class="dropdown-content">
+            <p>Mobile</p>
+            <p>PC</p>
+            <p>Playstation</p>
+            <p>Xbox</p>
+          </div>
+        </div>
       </div>
     </header>
+
+    <!-- Card section -->
     <div class="content-wrapper">
       <div id="card-container"></div>
     </div>
@@ -32,6 +67,7 @@
         </div>
       </div>
     </div>
+
     <div class="footer">
       <button onclick="quoteAlert();">Get A Quote!</button>
       <button onclick="removeLastCard();">Remove A Card!</button>
