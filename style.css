@@ -33,31 +33,144 @@ body {
 
 #card-container {
   display: flex;
-  justify-content: center;
-  margin: 20px;
+  flex-wrap: wrap; /* Allows cards to wrap to next row when needed */
+  justify-content: center; /* Centers the cards horizontally */
+  gap: 20px; /* Adds space between cards */
+  margin: 20px auto; /* Centers the container */
+  position: relative; /* Needed for absolute positioning */
+  /* min-height: 370px; Prevent container collapse */
+  /* max-width: 1200px; Optional: limits how wide the container can grow */
 }
 
 .card {
-  width: 300px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin: 5px;
+  width: 300px; /* Fixed width for each card */
+  margin: 0; /* Remove individual margins since we're using gap */  
+  opacity: 1;
+  transition: opacity 0.6s ease;
 }
 
-.card:hover {
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
-  cursor: pointer;
+.card::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border: 6px solid transparent;
+  border-radius: 3px;
+  transition: all 0.6s ease;
+  pointer-events: none;
+  z-index: -1;
 }
 
-.card:active {
-  /*
-    Shift to left of screen then display content
-    Also make other cards transparent (?) 
-  */
+.card.active {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  width: 800px; /* Adjust width for expanded card */
+  max-width: 90vw; /* Don't exceed viewport width */
+  border-width: 2px;
+}
+
+
+.card.active::before {
+  top: -15px;
+  left: -12px;
+  right: -12px;
+  bottom: -12px;
+}
+
+.card.active .card-content {
+  width: 100%;
+}
+
+.card.active img {
+  width: 300px; /* Fixed width for image */
+  transform: none;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.card.active .card-details {
+  margin-left: 320px; /* Image width + some spacing */
+  transform: none;
+  height: 100%;
+  min-height: 350px;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0); /* Slides up */
 }
 
 .card-content {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 350px;
+  border-radius: 3px;
+  font-family: "Verdana";
+  color: #777;
+  align-items: center;
+}
+
+.card img {
+  display: flex;
+  justify-content: center;
+  width: 300px;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  border-radius: 13px;
+}
+
+.card-details {
+  flex: 1;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  background: white;
+  border: 2px solid #412626;
+  border-radius: 5px;
+  width: auto;
+  min-width: 300px;
+  max-width: none;
+  height: calc(100% - 40px); /* Account for padding */
+  transform: translateY(100px); /* Starts below */
+  transition: transform 0.6s ease;
+  box-sizing: border-box;
+}
+
+
+#card-container.hide-others {
+  opacity: 1;
+  pointer-events: auto; 
+  flex-wrap: wrap; /* Ensure proper layout */
+}
+
+#card-container.hide-others .card:not(.active) {
+  opacity: 0; /* Hide other cards with fade effect */
+  pointer-events: none; /* Disable interactions for inactive cards */
+  transition: opacity 0.6s ease;
+}
+
+
+.card:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.card-content {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 350px;
+  background: white;
   font-family: "Verdana";
   color: #777;
 }
@@ -67,19 +180,42 @@ body {
   font-size: 20px;
 }
 
-.card img {
-  width: 100%; 
-  height: 350px; 
-  object-fit: cover; 
-  display: block;  
-  border-radius: 5px; 
-}
-
 /* Character name */
 .card-content h3 {
   margin-top: 0;
   font-size: 15px;
   text-align: center;
+}
+.card.active .card-content {
+  width: 100%;
+}
+
+.card.active img {
+  width: 300px; /* Fixed width for image */
+  transform: none;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
 }
 
 .footer {
@@ -101,4 +237,10 @@ button {
   font-size: 22px;
   cursor: pointer;
   margin: 5px;
+}
+
+.content-wrapper {
+  position: relative;
+  min-height: 100vh;
+  padding: 20px;
 }

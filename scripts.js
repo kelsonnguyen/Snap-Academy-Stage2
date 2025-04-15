@@ -1,44 +1,33 @@
-/**
- * Data Catalog Project Starter Code - SEA Stage 2
- *
- * This file is where you should be doing most of your work. You should
- * also make changes to the HTML and CSS files, but we want you to prioritize
- * demonstrating your understanding of data structures, and you'll do that
- * with the JavaScript code you write in this file.
- *
- * The comments in this file are only to help you learn how the starter code
- * works. The instructions for the project are in the README. That said, here
- * are the three things you should do first to learn about the starter code:
- * - 1 - Change something small in index.html or style.css, then reload your
- *    browser and make sure you can see that change.
- * - 2 - On your browser, right click anywhere on the page and select
- *    "Inspect" to open the browser developer tools. Then, go to the "console"
- *    tab in the new window that opened up. This console is where you will see
- *    JavaScript errors and logs, which is extremely helpful for debugging.
- *    (These instructions assume you're using Chrome, opening developer tools
- *    may be different on other browsers. We suggest using Chrome.)
- * - 3 - Add another string to the titles array a few lines down. Reload your
- *    browser and observe what happens. You should see a fourth "card" appear
- *    with the string you added to the array, but a broken image.
- *
- */
-
 // Array of Title, URL, and Character
-// [0] is Title, [1] is image link, [2] is Character name
 gameChars = 
 [
-  ["Honkai Star Rail",
-     "https://www.destructoid.com/wp-content/uploads/2025/04/castorice-hsr-official-artwork.jpg", 
-     "Castorice"],
-  ["Bloons TD 6",
-    "images/druid.jpg",
-    "Druid"],
-  ["League of Legends",
-    "images/elementalist_lux.jpg",
-    "Lux"],
-  ["Genshin Impact",
-    "images/genshin_gaming.jpg",
-    "Gaming"]
+  {title: "Honkai Star Rail",
+     link: "https://www.destructoid.com/wp-content/uploads/2025/04/castorice-hsr-official-artwork.jpg", 
+     charName: "Castorice"},
+  {title: "Bloons TD 6",
+    link: "images/druid.jpg",
+    charName: "Druid"},
+  {title: "Genshin Impact",
+    link: "images/genshin_gaming.jpg",
+    charName: "Gaming"},
+  {title: "League of Legends",
+    link: "images/league_ahri.jpg",
+    charName: "Ahri"},
+  {title: "League of Legends",
+    link: "images/league_kaisa.jpg",
+    charName: "Kai'sa"},
+  {title: "League of Legends",
+    link: "images/elementalist_lux.jpg",
+    charName: "Lux"},
+  {title: "League of Legends",
+    link: "images/league_morgana.jpg",
+    charName: "Morgana"},
+  {title: "League of Legends",
+    link: "images/league_senna.jpg",
+    charName: "Senna"},
+  {title: "League of Legends",
+    link: "images/league_yone.jpg",
+    charName: "Yone"},
 ];
 
 // Your final submission should have much more data than this, and
@@ -60,23 +49,32 @@ function showCards(filters) {
 function editCardContent(card, filteredData) {
   card.style.display = "block";
 
-  /*
-  const cardHeader = card.querySelector("h2");
-  cardHeader.textContent = filteredData[0];
-  */
+  // Get information of card
   const cardImage = card.querySelector("img");
-  cardImage.src = filteredData[1];
-  cardImage.alt = filteredData[0] + " Poster";
-  /*
-  // Character name
-  const cardCharacter = card.querySelector("h3");
-  cardCharacter.textContent = filteredData[2];
-
-  // You can use console.log to help you debug!
-  // View the output by right clicking on your website,
-  // select "Inspect", then click on the "Console" tab
-  console.log("new card:", filteredData[0], "- html: ", card);
-  */
+  cardImage.src = filteredData.link;
+  cardImage.alt = filteredData.title + " Character";
+  const details = card.querySelector(".card-details");
+  details.querySelector("h2").textContent = filteredData.title;
+  details.querySelector("h3").textContent = filteredData.charName;
+  
+  // Add click handler
+  card.addEventListener('click', function() {
+    const container = document.getElementById('card-container');
+    const allCards = document.querySelectorAll('.card');
+    const isActive = this.classList.contains('active');
+    
+    // Remove active from all cards -> returns view of all cards
+    allCards.forEach(c => {
+      c.classList.remove('active');
+    });
+    container.classList.remove('hide-others');
+    
+    // Hide other cards -> shows view of clicked card
+    if (!isActive) {
+      card.classList.add('active');
+      container.classList.add('hide-others');
+    }
+  });
 }
 
 // This calls the addCards() function when the page is first loaded
@@ -105,8 +103,8 @@ searchInput.addEventListener("input", (e) => {
   const searchString = e.target.value.toLowerCase();
 
   const filters = gameChars.filter(game => {
-    if (game[0].toLowerCase().startsWith(searchString) ||
-      game[2].toLowerCase().startsWith(searchString)) {
+    if (game.title.toLowerCase().startsWith(searchString) ||
+      game.charName.toLowerCase().startsWith(searchString)) {
         return true;
       }
       return false;
