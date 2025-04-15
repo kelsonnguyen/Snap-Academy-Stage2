@@ -37,55 +37,75 @@ body {
 
 .filters-container {
   display: flex;
-  justify-content: space-between; /* This will push them to the edges */
-  width: 100%; /* Take full width of parent */
-  max-width: 900px; /* Optional: Set a max-width if needed */
-  margin: 10px auto; /* Center the container */
-  padding: 0 10px; /* Add some padding on sides */
+  justify-content: space-evenly;
+  /* margin: 20px 0; */
+  position: relative;
+  z-index: 2;
 }
 
 /* 
-  Dropdown 
-  From W3School 
+  DROPDOWN SECTION 
 */
 .dropdown {
   position: relative;
-  display: inline-block;
+  text-align: center;
+  margin: 0 10px;
+}
+
+.dropdown-toggle-checkbox {
+  display: none;
+}
+
+.dropdown-toggle {
+  display: block;
   font-family: "Verdana";
   font-weight: bold;
+  font-size: 1.4em;
   color: #000000;
   border: 1px solid #cc5a5a;
-  padding: 2px 2px 2px 2px;
-  flex: 1; /* Each dropdown will grow equally */
-  margin: 0 5px; /* Small gap between them */
-  min-width: 0; /* Allows text truncation if needed */
-  text-align: center; /* Center the text */
-    box-sizing: border-box;
-  width: calc(33.33% - 13px);
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  user-select: none;
+  padding: 10px 20px 10px 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.dropdown-toggle-checkbox:checked + .dropdown-toggle {
+  background-color: #cc5a5a;
+  color: white;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  justify-content: center;
-  align-items: center;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: #f9f9f9;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  padding: 12px 16px;
-  z-index: 1;
+  padding: 12px 20px 16px 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  z-index: 10;
   text-align: center;
-  left: 50%;
-  transform: translateX(-50%); 
+  border-radius: 5px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown-toggle-checkbox:checked + .dropdown-toggle + .dropdown-content {
   display: block;
-  margin-top: 4px;
-  font-family: "Verdana";
-  color: #777;
 }
 
+
+.check-element {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* spacing between checkbox and text */
+  margin: 5px;
+  white-space: nowrap;
+}
 
 /*
   CARDS SECTION

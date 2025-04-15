@@ -13,37 +13,97 @@
     <header class="main-header">
       <h1 class="title">Favorite Game Characters</h1>
       <div class="search-container">
-        <input class="search-bar" type="search" id="search" placeholder="Search by title or character name" data-search> 
+        <input class="search-bar" type="search" id="search" placeholder="Search by character name" data-search> 
       </div>
 
       <!-- Filter section -->
-      <div class="filter-container">
+      <div class="filters-container">
         <div class="dropdown">
-          <span>Games</span>
+          <input type="checkbox" id="games-toggle" class="dropdown-toggle-checkbox">
+          <label for="games-toggle" class="dropdown-toggle">Games</label>
           <div class="dropdown-content">
-            <p>Hello World!</p>
-          </div>
-        </div>
-        <div class="dropdown">
-          <span>Genres</span>
-          <div class="dropdown-content">
-            <p>Adventure</p>
-            <p>MMO</p>
-            <p>MOBA</p>
-            <p>Role-Playing</p>
-            <p>RTS</p>
-            <p>Strategy</p>
-            <p>Tower Defense</p>
+              <div class="check-element">
+                <label for="bloons-check">Bloons TD 6</label>
+                <input type="checkbox" class="title-filter" id="bloons-check">
+              </div>
+              <div class="check-element">
+                <label for="hsr-check">Honkai Star Rail</label>
+                <input type="checkbox" class="title-filter" id="hsr-check">
+              </div>
+              <div class="check-element">
+                <label for="genshin-check">Genshin Impact</label>
+                <input type="checkbox" class="title-filter" id="genshin-check">
+              </div>
+              <div class="check-element">
+                <label for="maple-check">Maplestory</label>
+                <input type="checkbox" class="title-filter" id="maple-check">
+              </div>
+              <div class="check-element">
+                <label for="league-check">League of Legends</label>
+                <input type="checkbox" class="title-filter" id="league-check">
+              </div>
+              <div class="check-element">
+                <label for="sc2-check">Starcraft 2</label>
+                <input type="checkbox" class="title-filter" id="sc2-check">
+              </div>
           </div>
         </div>
 
         <div class="dropdown">
-          <span>Platforms</span>
+          <input type="checkbox" id="genres-toggle" class="dropdown-toggle-checkbox">
+          <label for="genres-toggle" class="dropdown-toggle">Genres</label>
           <div class="dropdown-content">
-            <p>Mobile</p>
-            <p>PC</p>
-            <p>Playstation</p>
-            <p>Xbox</p>
+            <div class="check-element">
+                <label for="adventure-check">Adventure</label>
+                <input type="checkbox" class="genre-filter" id="adventure-check">
+              </div>
+              <div class="check-element">
+                <label for="MMO-check">MMO</label>
+                <input type="checkbox" class="genre-filter" id="MMO-check">
+              </div>
+              <div class="check-element">
+                <label for="MOBA-check">MOBA</label>
+                <input type="checkbox" class="genre-filter" id="MOBA-check">
+              </div>
+              <div class="check-element">
+                <label for="roleplay-check">Role-Playing</label>
+                <input type="checkbox" class="genre-filter" id="roleplay-check">
+              </div>
+              <div class="check-element">
+                <label for="RTS-check">RTS</label>
+                <input type="checkbox" class="genre-filter" id="RTS-check">
+              </div>
+              <div class="check-element">
+                <label for="strategy-check">Strategy</label>
+                <input type="checkbox" class="genre-filter" id="strategy-check">
+              </div>
+              <div class="check-element">
+                <label for="tower-defense-check">Tower Defense</label>
+                <input type="checkbox" class="genre-filter" id="tower-defense-check">
+              </div>
+          </div>
+        </div>
+        
+        <div class="dropdown">
+          <input type="checkbox" id="platform-toggle" class="dropdown-toggle-checkbox">
+          <label for="platform-toggle" class="dropdown-toggle">Platforms</label>
+            <div class="dropdown-content">
+              <div class="check-element">
+                <label for="mobile-check">Mobile</label>
+                <input type="checkbox" class="platform-filter" id="mobile-check">
+              </div>
+            <div class="check-element">
+              <label for="pc-check">PC</label>
+              <input type="checkbox" class="platform-filter" id="pc-check">
+            </div>
+            <div class="check-element">
+              <label for="playstation-check">Playstation</label>
+              <input type="checkbox" class="platform-filter" id="playstation-check">
+            </div>
+            <div class="check-element">
+              <label for="xbox-check">Xbox</label>
+              <input type="checkbox" class="platform-filter" id="xbox-check">
+            </div>
           </div>
         </div>
       </div>

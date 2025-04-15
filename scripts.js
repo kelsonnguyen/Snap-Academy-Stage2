@@ -117,15 +117,15 @@ function editCardContent(card, filteredData) {
     
     // Hide other cards -> shows view of clicked card
     if (!isActive) {
-      card.classList.add('active');
-      container.classList.add('hide-others');
+      card.classList.add("active");
+      container.classList.add("hide-others");
     }
   });
 }
 
 // This calls the addCards() function when the page is first loaded
 document.addEventListener("DOMContentLoaded", showCards(gameChars));
-
+  
 function quoteAlert() {
   console.log("Button Clicked!");
   alert(
@@ -149,8 +149,7 @@ searchInput.addEventListener("input", (e) => {
   const searchString = e.target.value.toLowerCase();
 
   const filters = gameChars.filter(game => {
-    if (game.title.toLowerCase().startsWith(searchString) ||
-      game.charName.toLowerCase().startsWith(searchString)) {
+    if (game.charName.toLowerCase().startsWith(searchString)) {
         return true;
       }
       return false;
@@ -158,3 +157,59 @@ searchInput.addEventListener("input", (e) => {
 
   showCards(filters);
 });
+
+// Filter settings
+function checkFilters() {
+  // Arrays to hold filters
+  const filteredTitles = [];
+  const filteredGenres = [];
+  const filteredPlatforms = [];
+
+  // Title filters
+  const titleCheckboxes = document.querySelectorAll(".title-filter");
+  for (let i = 0; i < titleCheckboxes.length; i++) {
+    const checkbox = titleCheckboxes[i];
+    if (checkbox.checked) {
+      const titleName = document.querySelector(`label[for="${checkbox.id}"]`).textContent;
+      filteredTitles.push(titleName);
+    }
+  }
+
+  // Genre filters
+  const genreCheckboxes = document.querySelectorAll(".genre-filter");
+  for (let i = 0; i < genreCheckboxes.length; i++) {
+    const checkbox = genreCheckboxes[i];
+    if (checkbox.checked) {
+      const genreName = document.querySelector(`label[for="${checkbox.id}"]`).textContent;
+      filteredGenres.push(genreName);
+    }
+  }
+
+  // Platform filters
+  const platformCheckboxes = document.querySelectorAll(".platform-filter");
+  for (let i = 0; i < platformCheckboxes.length; i++) {
+    const checkbox = platformCheckboxes[i];
+    if (checkbox.checked) {
+      const platformName = document.querySelector(`label[for="${checkbox.id}"]`).textContent;
+      filteredPlatforms.push(platformName);
+    }
+  }
+
+  // Similiar to the search function but uses arrays
+  const allFilters = gameChars.filter(game => {
+    titleValues = filteredTitles.length == 0 || filteredTitles.includes(game.title);
+    genreValues = filteredGenres.length == 0 || filteredGenres.every(genre => game.genre.includes(genre));
+    platformValues = filteredPlatforms.length == 0 || 
+                      filteredPlatforms.every(platform => game.platform.includes(platform));
+
+    return titleValues && genreValues && platformValues;
+  });
+
+  showCards(allFilters);
+}
+
+// Filter event listener
+const allCheckboxes = document.querySelectorAll(".title-filter, .genre-filter, .platform-filter");
+for (let i = 0; i < allCheckboxes.length; i++) {
+  allCheckboxes[i].addEventListener("change", checkFilters);
+}
