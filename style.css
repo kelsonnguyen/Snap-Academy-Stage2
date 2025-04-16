@@ -151,6 +151,8 @@ body {
   width: 800px; /* Adjust width for expanded card */
   max-width: 90vw; /* Don't exceed viewport width */
   border-width: 2px;
+  height: auto; /* Let it grow with content */
+  max-height: 90vh; /* But don't exceed viewport height */
 }
 
 .card.active::before {
@@ -176,7 +178,8 @@ body {
 .card.active .card-details {
   margin-left: 320px; /* Image width + some spacing */
   transform: none;
-  height: 100%;
+  min-height: auto; /* Remove fixed height */
+  height: auto; /* Let it grow naturally */
   min-height: 350px;
   opacity: 1;
   pointer-events: auto;
@@ -208,6 +211,7 @@ body {
 .card-details {
   flex: 1;
   padding: 20px;
+  padding-top: 30px;
   opacity: 0;
   pointer-events: none;
   background: white;
@@ -219,6 +223,8 @@ body {
   transform: translateY(100px); /* Starts below */
   transition: transform 0.6s ease;
   box-sizing: border-box;
+  overflow-y: auto; /* Add scroll if content is too tall */
+  max-height: 80vh; /* Prevent it from being too tall */
 }
 
 #card-container.hide-others {
@@ -244,14 +250,14 @@ body {
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 350px;
+  height: 400px;
   background: transparent;
   font-family: "Verdana";
   color: black;
 }
 
 .card-content h2 {
-  margin-top: 0;
+  margin-top: -25px;
   margin-bottom: 2px;
   font-size: 30px;
   font-weight: bold;

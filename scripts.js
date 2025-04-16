@@ -6,77 +6,119 @@ gameChars =
     link: "images/druid.jpg",
     charName: "Druid",
     genre: ["Strategy", "Tower Defense"],
-    platform: ["PC", "Mobile", "Playstation", "Xbox"]
+    platform: ["PC", "Mobile", "Playstation", "Xbox"],
+    description: "Silly monkey who pops bloons using the power of nature.",
+    reason: "Bro's carrying me in the Rogue Legends DLC but also lags my iPad :(",
+    rating: "9.5/10 (-0.5 for making me lose a life for lagging my iPad)"
   },  
   {
     title: "Bloons TD 6",
     link: "images/btd6_heli.png",
     charName: "Heli Pilot",
     genre: ["Strategy", "Tower Defense"],
-    platform: ["PC", "Mobile", "Playstation", "Xbox"]
+    platform: ["PC", "Mobile", "Playstation", "Xbox"],
+    description: "Silly monkey but but BUTTTTTT... in a helicopter! It can freely roam " +
+                  "around the map!",
+    reason: "Early game GOAT that I also depend on for my camo bloons detection.",
+    rating: "10/10"
   },  
   {
     title: "Honkai Star Rail",
     link: "images/hsr_acheron.png", 
     charName: "Acheron",
     genre: ["Strategy", "Role-Playing"],
-    platform: ["PC", "Mobile", "Playstation"]
+    platform: ["PC", "Mobile", "Playstation"],
+    description: "A so-called emotionless \"Galaxy Ranger\" who initially holds a mysterious past...",
+    reason: "She was the gateway to me opening my wallet for the game... but she also redefined meta, " + 
+            "and I love doing big booty damage! She is kinda falling off though :(",
+    rating: "8/10 (-1 for enabling me and -1 for falling off meta-wise)"
 },
   {
     title: "Honkai Star Rail",
     link: "images/hsr_castorice.png", 
     charName: "Castorice",
     genre: ["Strategy", "Role-Playing"],
-    platform: ["PC", "Mobile", "Playstation"]
+    platform: ["PC", "Mobile", "Playstation"],
+    description: "One of the Chrysos Heirs, she represents the death titan (i lowkey skipped the dialogue, so I might be lying)",
+    reason: "Imma be real... I don't really like her that much but I'm going to lie to myself and say that she's one of my " +
+            "favorites because I did open my wallet for her... She has a dragon and a pretty deadly touch (haha)",
+    rating: "5/10 (minus points for stealing my money I willingly gave + I don't really know her personality)"
   },
   {
     title: "Genshin Impact",
     link: "images/genshin_gaming.jpg",
     charName: "Gaming",
     genre: ["Adventure", "Role-Playing"],
-    platform: ["PC", "Mobile", "Playstation"]
+    platform: ["PC", "Mobile", "Playstation"],
+    description: "A hard runaway dragon dancer who relentlessly fights for his dream.",
+    reason: "Unfortunately, I did open my wallet for him (there's a pattern with him and some other characters on " +
+            "this website. However, he is fun! His main focus is plunge attacks, and his personality is fun! Oh dear..." +
+            " I said fun twice, but I do mean it. I haven't been as active as I used to be on Genshin anymore though :(",
+    rating: "9.5/10 (-0.5 for taking my money)"
   },
   {
     title: "Maplestory",
     link: "images/maplestory_adele.jpg",
     charName: "Adele",
     genre: ["MMO"],
-    platform: ["PC", "Mobile"]
+    platform: ["PC", "Mobile"],
+    description: "Light sword queen you get a sword you get a sword EVERYBODY (enemies) GETS A SWORD (in them)!",
+    reason: "I unfortunately don't play Maplestory anymore, but she will always (not really always) be my fave. Her " +
+            "aesthetics are so pretty, and she's a pretty mobile damage dealer. Now, I want to play Maplestory again...",
+    rating: "9/10 (-1 for potentially resurfacing my two-week addiction when this is due soon soon)"
   },  
   {
     title: "League of Legends",
     link: "images/elementalist_lux.jpg",
     charName: "Lux",
     genre: ["MOBA"],
-    platform: ["PC", "Mobile"]
+    platform: ["PC", "Mobile"],
+    description: "DEMACIA! (She's a mage in an anti-mage society, and me n friends fight over her in champ select)",
+    reason: "Lux is Lux that's why League is giving her another skin (but she's fun to play)",
+    rating: "9/10 (-0.5 because my friend gets her sometimes instead of me and -0.5 because she dies sometimes " +
+            "(it's my fault because we control the character)"
   },
   {
     title: "League of Legends",
     link: "images/league_morgana.jpg",
     charName: "Morgana",
     genre: ["MOBA"],
-    platform: ["PC", "Mobile"]
+    platform: ["PC", "Mobile"],
+    description: "A fallen angel because she wishes to help humanity (I think idk I'm not really caught up on League lore tbh).",
+    reason: "She's basically Lux ability-wise ! She also has a lot of crowd control abilitites, so it's fun to play against enemies.",
+    rating: "9/10 (-1 because I miss my abilities a lot)"
   },
   {
     title: "League of Legends",
     link: "images/league_senna.jpg",
     charName: "Senna",
     genre: ["MOBA"],
-    platform: ["PC", "Mobile"]
+    platform: ["PC", "Mobile"],
+    description: "Freed from a lantern that trapped her soul, she rejoins the Sentinels of Light in their fight against the Shadow Isles.",
+    reason: "She can hit enemies from far away once she scales enough, so I don't have to worry too much about dying !",
+    rating: "9.5/10 (-0.5 because sometimes I lose before we win :c)"
   },
   {
     title: "League of Legends",
     link: "images/league_yone.jpg",
     charName: "Yone",
     genre: ["MOBA"],
-    platform: ["PC", "Mobile"]
+    platform: ["PC", "Mobile"],
+    description: "Back from the dead, he now travels the lands to fight demons.",
+    reason: "Face card doesn't decline. Also, he's easy to build and has fun abilities. Did I mention face card yet btw.",
+    rating: "9/10 (-1 because he's a melee champ)"
   },
   {
     title: "Starcraft 2",
     link: "images/sc2_kerrigan.jpg",
     charName: "Kerrigan",
     genre: ["Strategy", "RTS"],
-    platform: ["PC"]
+    platform: ["PC"],
+    description: "Once a ghost, then becoming the Queen of Blades, ruler of the Zerg, reverting back to human and... " +
+    "there's honestly a lot but basically she's been thru a lot.",
+    reason: "BADDIE OF THE UNIVERSE MAKE SOME NOISE!!!!! Kerrigan you will always be famous (Starcraft has been fading " +
+    "from the spotlight for years).",
+    rating: "10/10 (My brain is telling me to subtract something, but my heart tells me no)."
   },
 ];
 
@@ -106,7 +148,6 @@ function editCardContent(card, filteredData) {
   const h3 = details.querySelector("h3");
   h2.textContent = filteredData.title;
   h3.textContent = filteredData.charName;
-
   
   // Font of card based on title
   switch (filteredData.title) {
@@ -124,15 +165,15 @@ function editCardContent(card, filteredData) {
       break;
     case "Maplestory":
       h2.style.fontFamily = "Bungee Spice", "Arial";
-      h3.style.fontFamily = "Caveat Brush", "Arial";
+      h3.style.fontFamily = "Papyrus", "Arial";
       break;
     case "League of Legends":
-      h2.style.fontFamily = "Roboto", "Arial";
-      h3.style.fontFamily = "Roboto", "Arial";
+      h2.style.fontFamily = "Papyrus", "Arial";
+      h3.style.fontFamily = "Papyrus", "Arial";
       break;
     case "Starcraft 2":
       h2.style.fontFamily = "Tektur", "Arial";
-      h3.style.fontFamily = "Caveat Brush", "Arial";
+      h3.style.fontFamily = "Tektur", "Arial";
       break;
     default: 
       h2.style.fontFamily = "Arial";
@@ -140,19 +181,14 @@ function editCardContent(card, filteredData) {
       break;
   }
 
-  // Content of bulletpoints
-  const bulletpoints = {
-    description: "",
-    reason: "",
-    rating: ""
-  }
+  const description = details.querySelector(".description-bulletpoint");
+  const reason = details.querySelector(".reason1-bulletpoint");
+  const rating = details.querySelector(".rating-bulletpoint");
 
-  switch (filteredData.charName) {
-    case "Druid": 
-      break;
-    default:
-      break;
-  }
+  description.textContent = filteredData.description;
+  reason.textContent = filteredData.reason;
+  rating.textContent = filteredData.rating;
+  
 
   // Add click handler
   card.addEventListener("click", function() {
