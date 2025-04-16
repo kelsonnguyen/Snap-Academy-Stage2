@@ -100,9 +100,60 @@ function editCardContent(card, filteredData) {
   cardImage.src = filteredData.link;
   cardImage.alt = filteredData.title + " Character";
   const details = card.querySelector(".card-details");
-  details.querySelector("h2").textContent = filteredData.title;
-  details.querySelector("h3").textContent = filteredData.charName;
+
+  // Title and charName
+  const h2 = details.querySelector("h2");
+  const h3 = details.querySelector("h3");
+  h2.textContent = filteredData.title;
+  h3.textContent = filteredData.charName;
+
   
+  // Font of card based on title
+  switch (filteredData.title) {
+    case "Bloons TD 6":
+      h2.style.fontFamily = "Luckiest Guy", "Arial";
+      h3.style.fontFamily = "Luckiest Guy", "Arial";
+      break;
+    case "Honkai Star Rail":
+      h2.style.fontFamily = "Anta", "Arial";
+      h3.style.fontFamily = "Anta", "Arial";
+      break;
+    case "Genshin Impact":
+      h2.style.fontFamily = "Caveat Brush", "Arial";
+      h3.style.fontFamily = "Caveat Brush", "Arial";
+      break;
+    case "Maplestory":
+      h2.style.fontFamily = "Bungee Spice", "Arial";
+      h3.style.fontFamily = "Caveat Brush", "Arial";
+      break;
+    case "League of Legends":
+      h2.style.fontFamily = "Roboto", "Arial";
+      h3.style.fontFamily = "Roboto", "Arial";
+      break;
+    case "Starcraft 2":
+      h2.style.fontFamily = "Tektur", "Arial";
+      h3.style.fontFamily = "Caveat Brush", "Arial";
+      break;
+    default: 
+      h2.style.fontFamily = "Arial";
+      h3.style.fontFamily = "Caveat Brush", "Arial";
+      break;
+  }
+
+  // Content of bulletpoints
+  const bulletpoints = {
+    description: "",
+    reason: "",
+    rating: ""
+  }
+
+  switch (filteredData.charName) {
+    case "Druid": 
+      break;
+    default:
+      break;
+  }
+
   // Add click handler
   card.addEventListener("click", function() {
     const container = document.getElementById("card-container");
@@ -119,6 +170,9 @@ function editCardContent(card, filteredData) {
     if (!isActive) {
       card.classList.add("active");
       container.classList.add("hide-others");
+
+      // Change background color based on card
+      updateBackgroundColor(filteredData.title);
     }
   });
 }
@@ -212,4 +266,39 @@ function checkFilters() {
 const allCheckboxes = document.querySelectorAll(".title-filter, .genre-filter, .platform-filter");
 for (let i = 0; i < allCheckboxes.length; i++) {
   allCheckboxes[i].addEventListener("change", checkFilters);
+}
+
+/*
+  UI Things
+*/
+
+// Header color
+function updateBackgroundColor(title) {
+  let color = "";
+
+  switch(title) {
+    case "Bloons TD 6":
+      color = "#38cfd9";
+      break;
+    case "Honkai Star Rail":
+      color = "#afafd4";
+      break;
+    case "Genshin Impact":
+      color = "#c24e34";
+      break;
+    case "Maplestory":
+      color = "#0c1675";
+      break;
+    case "League of Legends":
+      color = "#718fac";
+      break;
+    case "Starcraft 2":
+      color = "#553e7d";
+      break;
+    default: 
+      color = "#000000";
+      break;
+  }
+
+  document.body.style.backgroundColor = color;
 }

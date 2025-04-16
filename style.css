@@ -119,6 +119,8 @@ body {
   position: relative; /* Needed for absolute positioning */
 }
 
+/* Figure out how to have card centered around specific part of screen + sticky */
+
 .card {
   width: 300px; /* Fixed width for each card */
   margin: 0; /* Remove individual margins since we're using gap */  
@@ -245,18 +247,21 @@ body {
   height: 350px;
   background: transparent;
   font-family: "Verdana";
-  color: #777;
+  color: black;
 }
 
 .card-content h2 {
   margin-top: 0;
-  font-size: 20px;
+  margin-bottom: 2px;
+  font-size: 30px;
+  font-weight: bold;
 }
 
 /* Character name */
 .card-content h3 {
   margin-top: 0;
-  font-size: 15px;
+  margin-bottom: 2px;
+  font-size: 25px;
   text-align: center;
 }
 .card.active .card-content {
