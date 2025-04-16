@@ -3,7 +3,7 @@ gameChars =
 [
   {
     title: "Bloons TD 6",
-    link: "images/druid.jpg",
+    link: "images/btd6_druid.png",
     charName: "Druid",
     genre: ["Strategy", "Tower Defense"],
     platform: ["PC", "Mobile", "Playstation", "Xbox"],
@@ -215,18 +215,7 @@ function editCardContent(card, filteredData) {
 
 // This calls the addCards() function when the page is first loaded
 document.addEventListener("DOMContentLoaded", showCards(gameChars));
-  
-function quoteAlert() {
-  console.log("Button Clicked!");
-  alert(
-    "I guess I can kiss heaven goodbye, because it got to be a sin to look this good!"
-  );
-}
 
-function removeLastCard() {
-  gameChars.pop(); // Remove last item in gameChars array
-  showCards(gameChars); // Call showCards again to refresh
-}
 
 // Data search
 /*
@@ -304,6 +293,50 @@ for (let i = 0; i < allCheckboxes.length; i++) {
   allCheckboxes[i].addEventListener("change", checkFilters);
 }
 
+// Form for adding a card
+// Aided heavily by https://www.youtube.com/watch?v=JeXqaKeJSRI 
+document.getElementById("card-form").addEventListener("submit", function(e) {
+  e.preventDefault(); // Page refreshes without this
+  const title = document.getElementById("title-input").value;
+  const charName = document.getElementById("charName-input").value;
+  const imageURL = document.getElementById("image-input").value;
+  const description = document.getElementById("description-input").value;
+  const likeReason = document.getElementById("reason-input").value;
+  const rating = document.getElementById("rating-input").value;
+
+  // Checked Boxes
+  const genreCheckboxes = document.querySelectorAll('input[name="genre"]:checked');
+  const platformCheckboxes = document.querySelectorAll('input[name="platform"]:checked');
+
+  // Add What is checked
+  const genres = [];
+  for (let i = 0; i < genreCheckboxes.length; i++) {
+      genres.push(genreCheckboxes[i].value);
+  }
+
+  const platforms = [];
+  for (let i = 0; i < platformCheckboxes.length; i++) {
+      platforms.push(platformCheckboxes[i].value);
+  }
+
+  // New card for gameCharss
+  const newCard = {
+    title: title,
+    link: imageURL,
+    charName: charName,
+    genre: genres,
+    platform: platforms,
+    description: description,
+    reason: likeReason,
+    rating: rating
+  };
+
+  // Push and show cards, (somewhat) taken/inspired from old removeCard function
+  gameChars.push(newCard);
+  showCards(gameChars);
+
+  alert("Card added!");
+});
 /*
   UI Things
 */

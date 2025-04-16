@@ -47,6 +47,10 @@
                 <label for="sc2-check">Starcraft 2</label>
                 <input type="checkbox" class="title-filter" id="sc2-check">
               </div>
+              <div class="check-element">
+                <label for="other-check">Other</label>
+                <input type="checkbox" class="title-filter" id="other-check">
+              </div>
           </div>
         </div>
 
@@ -82,6 +86,10 @@
                 <label for="tower-defense-check">Tower Defense</label>
                 <input type="checkbox" class="genre-filter" id="tower-defense-check">
               </div>
+              <div class="check-element">
+                <label for="other-check">Other</label>
+                <input type="checkbox" class="genre-filter" id="other-check">
+              </div>
           </div>
         </div>
         
@@ -104,6 +112,10 @@
             <div class="check-element">
               <label for="xbox-check">Xbox</label>
               <input type="checkbox" class="platform-filter" id="xbox-check">
+            </div>
+            <div class="check-element">
+              <label for="other-check">Other</label>
+              <input type="checkbox" class="platform-filter" id="other-check">
             </div>
           </div>
         </div>
@@ -142,8 +154,46 @@
     </div>
 
     <div class="footer">
-      <button onclick="quoteAlert();">Get A Quote!</button>
-      <button onclick="removeLastCard();">Remove A Card!</button>
+      <div class="footer-section card-creator">
+        <form id="card-form">
+          <div class="form-grid">
+            <input type="text" id="title-input" placeholder="Game Title" required>
+            <input type="text" id="charName-input" placeholder="Character Name" required>
+            <input type="url" id="image-input" placeholder="Image URL" required> <!-- because user doesn't have access to images folder -->
+            <textarea id="description-input" placeholder="Description" required></textarea>
+            <textarea id="reason-input" placeholder="Reason You Like the Character" required></textarea>
+            <input type="text" id="rating-input" placeholder="Rating (e.g., 9/10)" required>
+            
+            <div class="checkbox-groups">
+              <div class="checkbox-group">
+                <span>Genres:</span>
+                <div class="checkboxes">
+                  <label><input type="checkbox" name="genre" value="Adventure">Adventure</label>
+                  <label><input type="checkbox" name="genre" value="MMO">MMO</label>
+                  <label><input type="checkbox" name="genre" value="MOBA">MOBA</label>
+                  <label><input type="checkbox" name="genre" value="Role-Playing">Role-Playing</label>
+                  <label><input type="checkbox" name="genre" value="RTS">RTS</label>
+                  <label><input type="checkbox" name="genre" value="Strategy">Strategy</label>
+                  <label><input type="checkbox" name="genre" value="Tower Defense">Tower Defense</label>
+                  <label><input type="checkbox" name="genre" value="Other">Other</label>
+                </div>
+              </div>
+              <div class="checkbox-group">
+                <span>Platforms:</span>
+                <div class="checkboxes">
+                  <label><input type="checkbox" name="platform" value="Mobile">Mobile</label>
+                  <label><input type="checkbox" name="platform" value="PC">PC</label>
+                  <label><input type="checkbox" name="platform" value="Playstation">Playstation</label>
+                  <label><input type="checkbox" name="platform" value="Playstation">Xbox</label>
+                  <label><input type="checkbox" name="platform" value="Other">Other</label>
+                </div>
+              </div>
+            </div>
+            
+            <button type="submit" class="submit-btn">Add Card</button>
+          </div>
+        </form>
+      </div>
     </div>
   </body>
 </html>
